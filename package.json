@@ -1,0 +1,24 @@
+{
+  "name": "uv-materializecss-angularjs-template",
+  "version": "1.0.0",
+  "description": "Materialize CSS  Template - With AngularJs",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivarajnaidu/uv-materializecss-angularjs-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shivarajnaidu/uv-materializecss-angularjs-template/issues"
+  },
+  "homepage": "https://github.com/shivarajnaidu/uv-materializecss-angularjs-template#readme"
+}
