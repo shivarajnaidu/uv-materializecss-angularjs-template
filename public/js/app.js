@@ -14,12 +14,12 @@
 			controller: 'dashCtrl',
 			isPublic: false
 		})
-		.when('/register', {
+		.when('/login', {
 			templateUrl: '../templates/login.html',
 			controller: 'loginCtrl',
 			isPublic: true
 		})
-		.when('/login', {
+		.when('/register', {
 			templateUrl: '../templates/register.html',
 			controller: 'registerCtrl',
 			isPublic: true

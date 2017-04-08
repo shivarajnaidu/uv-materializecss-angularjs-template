@@ -1,1 +1,6 @@
 /* CUSTOM CSS */
+
+#registration-form .card-title,
+#login-form .card-title {
+   font-weight: bold;
+}

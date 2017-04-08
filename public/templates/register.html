@@ -1,3 +1,32 @@
 <div class="row">
-	<div class="col s12 m4"></div>
+	<div class="col s12 m6 offset-m3">
+		<div class="card grey lighten-4" id="registration-form">
+			<div class="card-content">
+				<div class="card-title center">REGISTER</div>
+				<form name="registrationForm">
+					<div class="input-field">
+						<input id="user-registration-name" type="text" ng-model="user.name" ng-required="true" class="validate">
+						<label for="user-registration-name">Name</label>
+					</div>
+					<div class="input-field">
+						<input id="user-registration-email" type="email" ng-model="user.email" ng-required="true" class="validate">
+						<label for="user-registration-email">Email</label>
+					</div>
+					<div class="input-field">
+						<input id="user-registration-password" type="password" minlength="4" ng-model="user.password" ng-required="true" class="validate">
+						<label for="user-registration-password">Password</label>
+					</div>
+					<div class="input-field">
+						<input id="user-registration-re-password" type="password" minlength="4" ng-model="user.rePassword" ng-required="true" class="validate">
+						<label for="user-registration-re-password">Re Enter The Password</label>
+					</div>
+					<div class="input-field">
+						<button type="submit" class="btn waves-effect waves-light">Register
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
