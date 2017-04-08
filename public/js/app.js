@@ -4,10 +4,27 @@
 
 	function config($routeProvider) {
 		$routeProvider
-		.when('/', {
+		.when('/home', {
 			templateUrl: '../templates/home.html',
-			controller: 'homeCtrl'
+			controller: 'homeCtrl',
+			isPublic: true
 		})
+		.when('/dash', {
+			templateUrl: '../templates/dash.html',
+			controller: 'dashCtrl',
+			isPublic: false
+		})
+		.when('/register', {
+			templateUrl: '../templates/login.html',
+			controller: 'loginCtrl',
+			isPublic: true
+		})
+		.when('/login', {
+			templateUrl: '../templates/register.html',
+			controller: 'registerCtrl',
+			isPublic: true
+		})
+		.otherwise('/home')
 	}
 
 

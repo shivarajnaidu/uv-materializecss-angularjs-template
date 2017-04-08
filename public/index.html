@@ -29,6 +29,9 @@
 	<!-- Controllers -->
 	<script src="js/controllers/main.js"></script>
 	<script src="js/controllers/home.js"></script>
+	<script src="js/controllers/dash.js"></script>
+	<script src="js/controllers/login.js"></script>
+	<script src="js/controllers/register.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="mainCtrl">
 <header>
@@ -37,15 +40,19 @@
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 			<a href="#" class="brand-logo">Logo</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="#">Sass</a></li>
-				<li><a href="#">Components</a></li>
-				<li><a href="#">JavaScript</a></li>
+				<li><a ng-href="#!/home">Home</a></li>
+				<li><a ng-href="#!/dash">Dash</a></li>
+				<li><a ng-href="#">Order</a></li>
+				<li><a ng-href="#!/login">Login</a></li>
+				<li><a ng-href="#!/register">Register</a></li>
 			</ul>
 
 			<ul class="side-nav green lighten-5" id="mobile-demo">
-				<li><a href="#">Sass</a></li>
-				<li><a href="#">Components</a></li>
-				<li><a href="#">JavaScript</a></li>
+				<li><a ng-href="#!/home">Home</a></li>
+				<li><a ng-href="#!/dash">Dash</a></li>
+				<li><a ng-href="#">Order</a></li>
+				<li><a ng-href="#!/login">Login</a></li>
+				<li><a ng-href="#!/register">Register</a></li>
 			</ul>
 		</div>
 	</nav>
