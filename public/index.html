@@ -15,6 +15,7 @@
 	<script src="libs/jquery/jquery-3.2.0.min.js"></script>
 	<script src="libs/materialize/js/materialize.min.js"></script>
 	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular/angular-route.min.js"></script>
 
 	<!-- App Files -->
 	<script src="js/other/app.ui.materializecss.js"></script>
@@ -22,29 +23,31 @@
 
 	<!-- Controllers -->
 	<script src="js/controllers/main.js"></script>
+	<script src="js/controllers/home.js"></script>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="mainCtrl">
 <header>
 	<nav class="light-blue lighten-1">
 		<div class="nav-wrapper container">
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 			<a href="#" class="brand-logo">Logo</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="sass.html">Sass</a></li>
-				<li><a href="badges.html">Components</a></li>
-				<li><a href="collapsible.html">JavaScript</a></li>
+				<li><a href="#">Sass</a></li>
+				<li><a href="#">Components</a></li>
+				<li><a href="#">JavaScript</a></li>
 			</ul>
 
 			<ul class="side-nav" id="mobile-demo">
-				<li><a href="sass.html">Sass</a></li>
-				<li><a href="badges.html">Components</a></li>
-				<li><a href="collapsible.html">JavaScript</a></li>
+				<li><a href="#">Sass</a></li>
+				<li><a href="#">Components</a></li>
+				<li><a href="#">JavaScript</a></li>
 			</ul>
 		</div>
 	</nav>
-
 </header>
-
-
+<main class="container" ng-view></main>
+<footer>
+	
+</footer>
 </body>
 </html>
