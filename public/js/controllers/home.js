@@ -4,6 +4,9 @@
 	.controller('homeCtrl', ['$scope', 'cardServ', homeCtrl]);
 
 	function homeCtrl($scope, cardServ) {
-		$scope.cards = cardServ.getAll();
+		cardServ.getAll()
+		.then(function (cards) {
+			$scope.cards = cards;
+		})
 	}
 })();

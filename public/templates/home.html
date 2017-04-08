@@ -2,7 +2,7 @@
   <div ng-repeat="card in cards" class="col s12 m4">
     <div class="card blue-grey lighten-1">
      <div class="card-image">
-              <img src="../images/logo.jpg">
+              <img ng-src="{{card.cardImagePath}}">
               <!-- <span class="card-title red-text">Card Title</span> -->
             </div>
       <div class="card-content white-text">
