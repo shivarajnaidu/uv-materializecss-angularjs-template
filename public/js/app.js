@@ -24,6 +24,11 @@
 			controller: 'registerCtrl',
 			isPublic: true
 		})
+		.when('/about', {
+			templateUrl: '../templates/about.html',
+			controller: 'aboutCtrl',
+			isPublic: true
+		})
 		.otherwise('/home')
 	}
 
