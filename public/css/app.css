@@ -1,6 +1,11 @@
 /* CUSTOM CSS */
 
+main.container {
+	margin-top: 20px;
+}
+
+/*Login And Registeration Form*/
 #registration-form .card-title,
 #login-form .card-title {
-   font-weight: bold;
+	font-weight: bold;
 }
