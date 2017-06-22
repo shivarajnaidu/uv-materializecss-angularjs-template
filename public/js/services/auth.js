@@ -1,11 +1,9 @@
 ;(function () {
 	angular.module('myApp')
 	
-	.factory('authServ', ['$http', 'localStorageServ', authServ]);
+	.factory('AuthServ', ['$http', '$location', 'TokenServ', 'AUTH_SERVER', AuthServ]);
 
-	function authServ($http, localStorageServ) {
-		var key = 'user';
-
+	function AuthServ($http, $location, TokenServ, AUTH_SERVER) {
 
 		function login(email, password) {
 			var user = {
@@ -13,21 +11,28 @@
 				password: password
 			};
 
-			return $http.post('/api/login', user)
+			return $http.post(AUTH_SERVER.login, user)
 			.then(function (res) {
-				var data = res.data;
-			    localStorageServ.save(key, data)
+				var data = res.data || {};
+				var token = data.token;
+			    TokenServ.save(data);
 				return data;
 			})
 		}
 
 		function logout() {
-			localStorageServ.remove(key)
+			TokenServ.remove();
+			$location.path('/login');
+		}
+
+		function isLoggedIn() {
+			return TokenServ.getToken();
 		}
 		
 		return {
 			login: login,
-			logout: logout
+			logout: logout,
+			isLoggedIn: isLoggedIn
 		};
 		
 	}

@@ -3,7 +3,7 @@
 		<div class="card grey lighten-4" id="login-form">
 			<div class="card-content">
 				<div class="card-title center">LOGIN</div>
-				<form name="loginForm">
+				<form name="loginForm" ng-submit="login()">
 					<div class="input-field">
 						<input id="user-login-email" type="email" ng-required="true" ng-model="user.email" class="validate">
 						<label for="user-login-email">Email</label>
@@ -13,7 +13,7 @@
 						<label for="user-login-password">Password</label>
 					</div>
 					<div class="input-field">
-						<button type="submit" class="btn waves-effect waves-light">Login
+						<button type="submit" class="btn waves-effect waves-light" ng-disabled="loginForm.$invalid">Login
 							<i class="material-icons right">send</i>
 						</button>
 					</div>
