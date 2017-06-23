@@ -1,29 +1,46 @@
-;(function () {
-	angular.module('myApp')
-	.directive('navActive', ['$rootScope', '$window', navActive]);
+'use strict';
+(function() {
+    angular.module('myApp')
+        .directive('navActive', ['$rootScope', '$window', 'AuthServ', navActive]);
 
-	function navActive($rootScope, $window) {
+    function navActive($rootScope, $window, AuthServ) {
 
-		function link(scope, element, attrs) {
-			var li = element.parent();
-			if (li[0].nodeName === 'LI') {
-				$rootScope.$on('$routeChangeSuccess', function(e) {
-					if (element[0].href === $window.location.href) {
-						li.addClass('active');
-					} else {
-						li.removeClass('active');
-					}
-				})
-			}
-		}
+        function link(scope, element, attrs) {
+            var li = element.parent();
+            if (li[0].nodeName === 'LI') {
+                $rootScope.$on('$routeChangeSuccess', function(e) {
+                    if (element[0].href === $window.location.href) {
+                        li.addClass('active');
+                    } else {
+                        li.removeClass('active');
+                    }
+                })
 
-		return {
-			restrict: 'A',
-			link: link
-		}
-	}
-	
+
+                $rootScope.$on('$routeChangeStart', function(e) {
+
+                    var isLoginMenu = (element[0].innerText === 'Login');
+                    var isRegisterMenu = (element[0].innerText === 'Register');
+
+                    if (isRegisterMenu || isLoginMenu) {
+                        if (AuthServ.isLoggedIn()) {
+                            li.addClass('hide');
+                        } else {
+                            li.removeClass('hide');
+                        }
+                    }
+
+
+                })
+
+            }
+        }
+
+        return {
+            restrict: 'A',
+            link: link
+        }
+    }
+
 
 })();
-
-

@@ -1,17 +1,37 @@
 ;
 (function() {
-    angular.module('myApp', ['ngRoute'])
+    var app = angular.module('myApp', ['ngRoute']);
 
-    .constant('AUTH_SERVER', {
+    app.run(['$rootScope', '$location', '$route', 'AuthServ', function($rootScope, $location, $route, AuthServ) {
+        function logOut() {
+            AuthServ.logOut()
+        };
+
+        function onRouteChangeStartHandler(ev, next, current) {
+            var isLoggedIn = AuthServ.isLoggedIn();
+            $rootScope.isLoggedIn = isLoggedIn;
+            var isAuthNeeded = !(next.$$route.isPublic);
+            var redirectToLoginPage = (next.$$route && isAuthNeeded && (!isLoggedIn));
+            if (redirectToLoginPage) {
+                $location.path('/login');
+            }
+
+        }
+
+        $rootScope.logOut = logOut;
+        $rootScope.$on('$routeChangeStart', onRouteChangeStartHandler)
+    }]);
+
+    app.constant('AUTH_SERVER', {
         login: '//localhost:3000/auth/api/login',
         forgotPassword: '//localhost:3000/auth/api/forgot-password'
-    })
+    });
 
-    .constant('API_SERVER', {
+    app.constant('API_SERVER', {
         BASE: '//localhost:3000/api/',
-    })
+    });
 
-    .config(['$routeProvider', config]);
+    app.config(['$routeProvider', config]);
 
     function config($routeProvider) {
         $routeProvider

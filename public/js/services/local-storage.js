@@ -1,42 +1,52 @@
-;(function () {
-	angular.module('myApp')
-	
-	.factory('localStorageServ', ['$window', localStorageServ]);
+'use strict';
+(function() {
+    angular.module('myApp')
 
-	function localStorageServ($window) {
+    .factory('localStorageServ', ['$window', localStorageServ]);
 
-		function save(key, data) {
-			var dataType = typeof data;
-			var isDataString = (dataType === 'string');
-			var isDataObject = (dataType === 'object');
-			var dataString;
+    function localStorageServ($window) {
 
-			if (data && isDataObject) {
-				dataString = JSON.stringify(data)
-			} else {
-				dataString = data;
-			}
+    	var _localStorage = $window.sessionStorage;
+    	// var _localStorage = $window.localStorage;
 
-			$window.localStorage.setItem(key, dataString);
-		}
+        function save(key, data) {
+            var dataType = typeof data;
+            var isDataString = (dataType === 'string');
+            var isDataObject = (dataType === 'object');
+            var dataString;
 
-		function remove(key) {
-			$window.localStorage.removeItem(key);
-		}
+            if (data && isDataObject) {
+                dataString = JSON.stringify(data)
+            } else {
+                dataString = data;
+            }
 
-		function read(key) {
-			var dataString = $window.localStorage.getItem(key);
-			var data = JSON.parse(dataString);
-			return data;
-		}
+            _localStorage.setItem(key, dataString);
+        }
 
-		
-		return {
-			save: save,
-			remove: remove,
-			read: read
-		};
-		
-	}
+        function remove(key) {
+            _localStorage.removeItem(key);
+        }
+
+        function read(key) {
+            var dataString = _localStorage.getItem(key);
+            var data;
+            try {
+                data = JSON.parse(dataString);
+            } catch (e) {
+                data = dataString;
+            }
+
+            return data;
+        }
+
+
+        return {
+            save: save,
+            remove: remove,
+            read: read
+        };
+
+    }
 
 })();
