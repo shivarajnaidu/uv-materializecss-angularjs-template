@@ -1,4 +1,4 @@
-;
+'use strict';
 (function() {
     var app = angular.module('myApp', ['ngRoute']);
 
@@ -7,30 +7,47 @@
             AuthServ.logOut()
         };
 
-        function onRouteChangeStartHandler(ev, next, current) {
+        // Event Handler For $routeChangeStart Event..
+        function onRouteChangeStart(event, next, current) {
+            // Check Whether User Logged In Or Not..
             var isLoggedIn = AuthServ.isLoggedIn();
             $rootScope.isLoggedIn = isLoggedIn;
-            var isAuthNeeded = !(next.$$route.isPublic);
-            var redirectToLoginPage = (next.$$route && isAuthNeeded && (!isLoggedIn));
+            
+            // Check Whether The Next Route Needs Authentication..
+            var isAuthNeeded = !(next.$$route && next.$$route.isPublic);
+
+            // Deside Whether User Needs To Be Redirected To Login Page Or Not..
+            var redirectToLoginPage = (isAuthNeeded && (!isLoggedIn));
+            
             if (redirectToLoginPage) {
                 $location.path('/login');
             }
 
         }
 
+        // Logout Function...
         $rootScope.logOut = logOut;
-        $rootScope.$on('$routeChangeStart', onRouteChangeStartHandler)
+
+        // Listener For Route Change Start...
+        $rootScope.$on('$routeChangeStart', onRouteChangeStart)
     }]);
 
+
+    // App Constatnts
+
+    // AUTH APIS
     app.constant('AUTH_SERVER', {
         login: '//localhost:3000/auth/api/login',
         forgotPassword: '//localhost:3000/auth/api/forgot-password'
     });
 
+    // GENERAL APIs
     app.constant('API_SERVER', {
-        BASE: '//localhost:3000/api/',
+        BASE: '//localhost:3000/api',
     });
 
+
+     // APP's Route Configuration
     app.config(['$routeProvider', config]);
 
     function config($routeProvider) {
