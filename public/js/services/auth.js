@@ -1,4 +1,5 @@
-;(function () {
+'use strict';
+(function () {
 	angular.module('myApp')
 	
 	.factory('AuthServ', ['$http', '$location', 'TokenServ', 'AUTH_SERVER', AuthServ]);

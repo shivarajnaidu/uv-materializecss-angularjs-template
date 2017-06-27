@@ -1,4 +1,5 @@
-;(function () {
+'use strict';
+(function () {
 	angular.module('myApp')
 	
 	.factory('cardServ', ['$q', '$timeout', cardServ]);
