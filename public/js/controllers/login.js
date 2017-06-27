@@ -9,7 +9,7 @@
         function login() {
             var email = $scope.user.email;
             var password = $scope.user.password;
-            AuthServ.login(email, password)
+            AuthServ.logIn(email, password)
                 .then(function(data) {
                     if (AuthServ.isLoggedIn()) {
                         $location.path('/dash');

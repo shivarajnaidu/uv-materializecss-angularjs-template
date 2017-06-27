@@ -3,6 +3,10 @@
     angular.module('myApp')
         .directive('navActive', ['$rootScope', '$window', 'AuthServ', navActive]);
 
+    // This Directive Will Controll Which Menu Item Should Be Higlited..
+    // So That User Can See Where He Is Now..
+    // And Also Controlls Which Menu Items Should Be Shown After/Before Login.
+
     function navActive($rootScope, $window, AuthServ) {
 
         function link(scope, element, attrs) {
@@ -19,11 +23,13 @@
 
                 $rootScope.$on('$routeChangeStart', function(e) {
 
+                    var isLoggedIn = AuthServ.isLoggedIn();
+
                     var isLoginMenu = (element[0].innerText === 'Login');
                     var isRegisterMenu = (element[0].innerText === 'Register');
 
                     if (isRegisterMenu || isLoginMenu) {
-                        if (AuthServ.isLoggedIn()) {
+                        if (isLoggedIn) {
                             li.addClass('hide');
                         } else {
                             li.removeClass('hide');

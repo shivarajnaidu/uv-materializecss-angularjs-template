@@ -6,7 +6,7 @@
 
 	function AuthServ($http, $location, TokenServ, AUTH_SERVER) {
 
-		function login(email, password) {
+		function logIn(email, password) {
 			var user = {
 				email: email,
 				password: password
@@ -21,7 +21,7 @@
 			})
 		}
 
-		function logout() {
+		function logOut() {
 			TokenServ.remove();
 			$location.path('/login');
 		}
@@ -31,8 +31,8 @@
 		}
 		
 		return {
-			login: login,
-			logout: logout,
+			logIn: logIn,
+			logOut: logOut,
 			isLoggedIn: isLoggedIn
 		};
 		
