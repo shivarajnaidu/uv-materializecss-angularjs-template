@@ -16,7 +16,7 @@
 			.then(function (res) {
 				var data = res.data || {};
 				var token = data.token;
-			    TokenServ.save(data);
+			    TokenServ.save(token);
 				return data;
 			})
 		}

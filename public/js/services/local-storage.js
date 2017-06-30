@@ -6,8 +6,8 @@
 
     function localStorageServ($window) {
 
-    	var _localStorage = $window.sessionStorage;
-    	// var _localStorage = $window.localStorage;
+        var _localStorage = $window.sessionStorage;
+        // var _localStorage = $window.localStorage;
 
         function save(key, data) {
             var dataType = typeof data;
@@ -17,11 +17,15 @@
 
             if (data && isDataObject) {
                 dataString = JSON.stringify(data)
-            } else {
+            }
+            if (data && isDataString) {
                 dataString = data;
             }
 
-            _localStorage.setItem(key, dataString);
+            if (data) {
+                _localStorage.setItem(key, dataString);
+            }
+
         }
 
         function remove(key) {
@@ -31,12 +35,15 @@
         function read(key) {
             var dataString = _localStorage.getItem(key);
             var data;
-            try {
-                data = JSON.parse(dataString);
-            } catch (e) {
-                data = dataString;
-            }
 
+            if (dataString) {
+                try {
+                    data = JSON.parse(dataString);
+                } catch (e) {
+                    data = dataString;
+                }
+            }
+            
             return data;
         }
 
